@@ -1,0 +1,16 @@
+version: "3"
+
+services:
+  server:
+    image: wireguard
+    build:
+      context: .
+      args:
+        - ubuntu_codename=bionic
+    volumes:
+      - ./config:/etc/wireguard
+      - /lib/modules:/lib/modules
+    network_mode: host
+    cap_add:
+      - NET_ADMIN
+      - SYS_MODULE
